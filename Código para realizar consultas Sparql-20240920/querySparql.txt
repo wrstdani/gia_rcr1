@@ -1,0 +1,35 @@
+PREFIX ex: <http://example.org/empresa#> 
+
+  
+
+SELECT ?nombre ?apellido 
+
+WHERE { 
+
+    { 
+
+        # Consulta para personas con apellido "Pérez" 
+
+        ?persona a ex:Persona ; 
+
+                 ex:tieneNombre ?nombre ; 
+
+                 ex:tieneApellido "Pérez" . 
+
+    } 
+
+    UNION 
+
+    { 
+
+        # Consulta para compañías con nombre "Creative Designs" 
+
+        ?compania a ex:Compania ; 
+
+                  ex:tieneNombreCompania "Creative Designs" . 
+
+        BIND("Compañía" AS ?apellido) 
+
+    } 
+
+} 

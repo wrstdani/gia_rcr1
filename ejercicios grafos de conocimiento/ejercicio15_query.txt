@@ -1,0 +1,10 @@
+PREFIX ex:<http://www.example.org/familia#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?nombreProgenitor
+
+WHERE {
+    ?persona a ex:Persona;
+             ex:hijoDe ?progenitor.
+    ?progenitor ex:nombre ?nombreProgenitor.
+}

@@ -1,0 +1,35 @@
+@prefix ex:<http://www.example.org/familia#>.
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dc:<http://purl.org/dc/elements/1.1/>.
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#>.
+
+
+# Definición de los conceptos
+ex:Juan_Garcia rdf:type ex:Persona;
+               ex:edad "45"^^xsd:integer;
+               ex:sexo "Masculino";
+               ex:nombre "Juan";
+               ex:apellido "García".
+
+ex:Maria_Perez rdf:type ex:Persona;
+               ex:edad "42"^^xsd:integer;
+               ex:sexo "Femenino";
+               ex:nombre "María";
+               ex:apellido "Pérez".
+
+ex:Pedro_Garcia rdf:type ex:Persona;
+                ex:edad "18"^^xsd:integer;
+                ex:sexo "Masculino";
+                ex:nombre "Pedro";
+                ex:apellido "García".
+
+
+# Definición de las relaciones que conectan a los conceptos
+ex:Juan_Garcia ex:padreDe ex:Pedro_Garcia;
+               ex:esposoDe ex:Maria_Perez.
+
+ex:Maria_Perez ex:madreDe ex:Pedro_Garcia;
+               ex:esposaDe ex:Juan_Garcia.
+
+ex:Pedro_Garcia ex:hijoDe ex:Juan_Garcia,
+                          ex:Maria_Perez.

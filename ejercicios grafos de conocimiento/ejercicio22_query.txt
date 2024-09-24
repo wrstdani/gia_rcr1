@@ -1,0 +1,10 @@
+PREFIX ex:<http://www.example.org/universidad#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?persona
+WHERE {
+    ?persona a ex:Persona;
+             ex:hablaIdioma ?idiomas.
+}
+GROUP BY ?persona
+HAVING (COUNT(?idiomas) > 1)

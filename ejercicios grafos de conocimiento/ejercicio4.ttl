@@ -1,0 +1,106 @@
+@prefix ex:<http://www.example.org/redSocial#>.
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dc:<http://purl.org/dc/elements/1.1/>.
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#>.
+
+
+# Definición de los conceptos
+ex:usuario1 rdf:type ex:Usuario;
+            ex:tieneNombre "Juan Pérez";
+            dc:date "1980-01-15"^^xsd:date.
+ex:usuario2 rdf:type ex:Usuario;
+            ex:tieneNombre "María López";
+            dc:date "1985-02-20"^^xsd:date.
+ex:usuario3 rdf:type ex:Usuario;
+            ex:tieneNombre "Carlos García";
+            dc:date "1990-03-25"^^xsd:date.
+ex:usuario4 rdf:type ex:Usuario;
+            ex:tieneNombre "Ana Martínez";
+            dc:date "1995-04-30"^^xsd:date.
+ex:usuario5 rdf:type ex:Usuario;
+            ex:tieneNombre "Luis Fernández";
+            dc:date "1982-05-10"^^xsd:date.
+ex:usuario6 rdf:type ex:Usuario;
+            ex:tieneNombre "Laura Gómez";
+            dc:date "1988-06-15"^^xsd:date.
+ex:usuario7 rdf:type ex:Usuario;
+            ex:tieneNombre "Pedro Sánchez";
+            dc:date "1993-07-20"^^xsd:date.
+ex:usuario8 rdf:type ex:Usuario;
+            ex:tieneNombre "Marta Díaz";
+            dc:date "1998-08-25"^^xsd:date.
+ex:usuario9 rdf:type ex:Usuario;
+            ex:tieneNombre "Jorge Ramírez";
+            dc:date "1984-09-30"^^xsd:date.
+ex:usuario10 rdf:type ex:Usuario;
+            ex:tieneNombre "Sofía Torres";
+            dc:date "1991-10-05"^^xsd:date.
+
+
+ex:publicacion1 rdf:type ex:Publicacion;
+                ex:tieneContenido "Hola, ¿cómo están?";
+                ex:numeroLikes "10"^^xsd:integer;
+                dc:date "2020-01-15"^^xsd:date.
+
+ex:publicacion2 rdf:type ex:Publicacion;
+                ex:tieneContenido "¡Qué buen día!";
+                ex:numeroLikes "25"^^xsd:integer;
+                dc:date "2020-02-20"^^xsd:date.
+
+ex:publicacion3 rdf:type ex:Publicacion;
+                ex:tieneContenido "Estoy aprendiendo RDF.";
+                ex:numeroLikes "15"^^xsd:integer;
+                dc:date "2020-03-10"^^xsd:date.
+
+ex:publicacion4 rdf:type ex:Publicacion;
+                ex:tieneContenido "¿Alguien quiere salir a correr?";
+                ex:numeroLikes "30"^^xsd:integer;
+                dc:date "2020-04-05"^^xsd:date.
+
+ex:publicacion5 rdf:type ex:Publicacion;
+                ex:tieneContenido "¡Feliz cumpleaños a mí!";
+                ex:numeroLikes "50"^^xsd:integer;
+                dc:date "2020-05-25"^^xsd:date.
+
+
+# Definición de las relaciones que conectan a los conceptos
+ex:usuario1 ex:generaPublicacion ex:publicacion3.
+ex:usuario2 ex:generaPublicacion ex:publicacion2.
+ex:usuario5 ex:generaPublicacion ex:publicacion4.
+ex:usuario7 ex:generaPublicacion ex:publicacion5.
+ex:usuario9 ex:generaPublicacion ex:publicacion1.
+
+ex:usuario1 ex:amigoDe ex:usuario2,
+                       ex:usuario3,
+                       ex:usuario4,
+                       ex:usuario5,
+                       ex:usuario6.
+
+ex:usuario2 ex:amigoDe ex:usuario1,
+                       ex:usuario3,
+                       ex:usuario4,
+                       ex:usuario5,
+                       ex:usuario6.
+
+ex:usuario3 ex:amigoDe ex:usuario1,
+                       ex:usuario2,
+                       ex:usuario4,
+                       ex:usuario5,
+                       ex:usuario6.
+ex:usuario4 ex:amigoDe ex:usuario1,
+                        ex:usuario2,
+                        ex:usuario3,
+                        ex:usuario5,
+                        ex:usuario6.
+
+ex:usuario5 ex:amigoDe ex:usuario1,
+                       ex:usuario2,
+                       ex:usuario3,
+                       ex:usuario4,
+                       ex:usuario6.
+
+ex:usuario6 ex:amigoDe ex:usuario1,    
+                       ex:usuario2,
+                       ex:usuario3,
+                       ex:usuario4,
+                       ex:usuario5.  

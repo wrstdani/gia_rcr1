@@ -1,0 +1,34 @@
+@prefix ex:<http://www.example.org/libros#>.
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dc:<http://purl.org/dc/elements/1.1/>.
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#>.
+
+
+# Definición de los conceptos
+ex:autor1 rdf:type ex:Autor;
+          ex:tieneNombre "Gabriel García Márquez".
+
+ex:autor2 rdf:type ex:Autor;
+          ex:tieneNombre "J.K. Rowling".
+
+ex:libro1 rdf:type ex:Libro;
+          ex:tieneNombre "Cien Años de Soledad";
+          dc:date "1967-05-30"^^xsd:date.
+
+ex:libro2 rdf:type ex:Libro;
+          ex:tieneNombre "El Amor en los Tiempos del Cólera";
+          dc:date "1985-09-01"^^xsd:date.
+
+ex:libro3 rdf:type ex:Libro;
+          ex:tieneNombre "Harry Potter y la Piedra Folosofal";
+          dc:date "1997-06-26"^^xsd:date.
+
+
+# Definición de las relaciones que conectan a los conceptos
+ex:autor1 ex:escribe ex:libro1,
+                     ex:libro2.
+ex:autor2 ex:escribe ex:libro3.
+
+ex:libro1 ex:escritoPor ex:autor1.
+ex:libro2 ex:escritoPor ex:autor1.
+ex:libro3 ex:escritoPor ex:autor2.

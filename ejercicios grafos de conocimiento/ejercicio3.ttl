@@ -1,0 +1,44 @@
+@prefix ex:<http://www.example.org/universidad#>.
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dc:<http://purl.org/dc/elements/1.1/>.
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#>.
+
+
+# Definición de los conceptos
+ex:universidad1 rdf:type ex:Universidad;
+                ex:tieneNombre "Universidad de Madrid".
+
+ex:universidad2 rdf:type ex:Universidad;
+                ex:tieneNombre "Universidad de Barcelona".
+
+
+ex:ciudad1 rdf:type ex:Ciudad;
+           ex:tieneNombre "Madrid".
+
+ex:ciudad2 rdf:type ex:Ciudad;
+           ex:tieneNombre "Barcelona".
+
+
+ex:persona1 rdf:type ex:Persona;
+            ex:tieneNombre "Ana García";
+            ex:correoElectronico "Ana.garcia@example.com";
+            ex:tieneEdad "23"^^xsd:integer;
+            ex:hablaIdioma "Español",
+                           "Inglés";
+            ex:tieneHobby "Leer".
+                          
+
+ex:persona2 rdf:type ex:Persona;
+            ex:tieneNombre "Juan López";
+            ex:correoElectronico "Juan.lopez@example.com";
+            ex:tieneEdad "30"^^xsd:integer;
+            ex:hablaIdioma "Español";
+            ex:tieneHobby "Cocina",
+                          "Fotografía".
+
+
+# Definición de las relaciones que conectan a los conceptos
+ex:universidad1 ex:ubicadaEn ex:ciudad1.
+ex:universidad2 ex:ubicadaEn ex:ciudad2.
+ex:persona1 ex:estudiaEn ex:universidad1.
+ex:persona2 ex:estudiaEn ex:universidad2.

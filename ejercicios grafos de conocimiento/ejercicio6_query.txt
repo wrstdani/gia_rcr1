@@ -1,0 +1,7 @@
+PREFIX ex:<http://www.example.org/libros#> 
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?instancia
+WHERE {
+    ?instancia a ex:Libro.
+}
