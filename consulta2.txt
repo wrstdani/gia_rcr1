@@ -1,0 +1,12 @@
+PREFIX ex:<http://www.example.org/empresa#> 
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Listado de empresas con número de empleados
+
+SELECT ?empresa ?nEmpleados
+WHERE {
+    ?empresa ex:tieneNumeroEmpleados ?nEmpleados.
+
+    # En este caso, podemos omitir "?empresa rdf:type ex:Compania" porque
+    # unicamente los objetos de este tipo poseen el predicado "tieneNumeroEmpleados".    
+}

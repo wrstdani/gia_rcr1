@@ -1,0 +1,11 @@
+PREFIX ex:<http://www.example.org/empresa#> 
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Listado de todos los empleados
+
+SELECT ?nombre ?apellido
+WHERE {
+    ?empleado a ex:Persona;
+              ex:tieneNombre ?nombre;
+              ex:tieneApellido ?apellido.
+}
