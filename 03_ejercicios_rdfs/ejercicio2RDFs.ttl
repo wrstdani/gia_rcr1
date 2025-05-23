@@ -1,0 +1,117 @@
+@prefix ex: <http://www.example.org/familia#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Definición de clases
+ex:Persona a rdfs:Class ;
+    rdfs:label "Persona" ;
+    rdfs:comment "Clase que representa a las personas de la familia." .
+
+ex:Familia a rdfs:Class ;
+    rdfs:label "Familia" ;
+    rdfs:comment "Clase que representa a la familia como un conjunto de personas." .
+
+
+# Propiedades de datos (data properties)
+ex:tieneNombre a rdfs:Property ;
+    rdfs:label "tiene nombre" ;
+    rdfs:comment "Almacena el nombre de una persona." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range xsd:string .
+
+ex:tieneApellido a rdfs:Property ;
+    rdfs:label "tiene apellido" ;
+    rdfs:comment "Almacena el apellido de una persona." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range xsd:string .
+
+ex:tieneEdad a rdfs:Property ;
+    rdfs:label "tiene edad" ;
+    rdfs:comment "Almacena la edad de una persona." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range xsd:integer .
+
+ex:sexo a rdfs:Property ;
+    rdfs:label "sexo" ;
+    rdfs:comment "Almacena el sexo de una persona." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range xsd:string .
+
+
+# Relaciones familiares
+ex:esFamilia a rdfs:Property ;
+    rdfs:label "es familia" ;
+    rdfs:comment "Indica cualquier tipo de relación familiar." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:esPadreDe a rdfs:Property ;
+    rdfs:label "es padre" ;
+    rdfs:comment "Indica que una persona es padre de otra." ;
+    rdfs:subClassOf ex:esFamilia ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:esMadreDe a rdfs:Property ;
+    rdfs:label "es madre" ;
+    rdfs:comment "Indica que una persona es madre de otra." ;
+    rdfs:subClassOf ex:esFamilia ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:hijoDe a rdfs:Property ;
+    rdfs:label "hijo de" ;
+    rdfs:comment "Indica que una persona es hijo de otra." ;
+    rdfs:subClassOf ex:esFamilia ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:esEsposoDe a rdfs:Property ;
+    rdfs:label "esposo de" ;
+    rdfs:comment "Indica que una persona es esposo de otra." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:esEsposaDe a rdfs:Property ;
+    rdfs:label "esposa de" ;
+    rdfs:comment "Indica que una persona es esposa de otra." ;
+    rdfs:domain ex:Persona ;
+    rdfs:range ex:Persona .
+
+ex:miembro a rdfs:Property ;
+    rdfs:label "miembro" ;
+    rdfs:comment "Indica que una persona es miembro de una familia." ;
+    rdfs:domain ex:Familia ;
+    rdfs:range ex:Persona .
+
+
+# Instancias de personas
+ex:Juan_Garcia a ex:Persona ;
+    ex:nombre "Juan" ;
+    ex:apellido "Garcia" ;
+    ex:edad 45 ;
+    ex:sexo "Masculino" ;
+    ex:esPadreDe ex:Pedro_Garcia ;
+    ex:esEsposoDe ex:Maria_Perez .
+
+ex:Maria_Perez a ex:Persona ;
+    ex:nombre "Maria" ;
+    ex:apellido "Perez" ;
+    ex:edad 42 ;
+    ex:sexo "Femenino" ;
+    ex:esMadreDe ex:Pedro_Garcia ;
+    ex:esEsposaDe ex:Juan_Garcia .
+
+ex:Pedro_Garcia a ex:Persona ;
+    ex:nombre "Pedro" ;
+    ex:apellido "Garcia" ;
+    ex:edad 18 ;
+    ex:sexo "Masculino" ;
+    ex:hijoDe ex:Juan_Garcia, ex:Maria_Perez .
+
+
+# Instancia de familia
+ex:familiaGarcia a ex:Familia ;
+    ex:miembro ex:Juan_Garcia, ex:Maria_Perez, ex:Pedro_Garcia .

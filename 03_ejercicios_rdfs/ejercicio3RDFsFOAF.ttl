@@ -1,0 +1,71 @@
+@prefix ex: <http://www.example.org/universidades#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+
+# Instancias de ciudades
+ex:ciudad1 a schema:City ;
+    schema:name "Madrid" .
+
+ex:ciudad2 a schema:City ;
+    schema:name "Barcelona" .
+
+# Instancias de universidades
+ex:univesidad1 a schema:CollegeOrUniversity ;
+    schema:name "Universidad de Madrid" ;
+    foaf:based_near ex:ciudad1 .
+
+ex:universidad2 a schema:CollegeOrUniversity ;
+    schema:name "Universidad de Barcelona" ;
+    foaf:based_near ex:ciudad2 .
+
+# Instancias de escuelas oficiales de idiomas
+ex:escuela1 a schema:EducationalOrganization ;
+    schema:name "Escuela Oficial de Idiomas de Madrid" ;
+    foaf:based_near ex:ciudad1 .
+
+# Instancias de personas
+ex:persona1 a foaf:Person ;
+    foaf:name "Ana García" ;
+    foaf:age 23 ;
+    foaf:mbox <mailto:ana.garcia@example.com> ;
+    foaf:based_near ex:ciudad1 ;
+    schema:alumniOf ex:universidad1, ex:escuela1 ;
+    schema:knowsLanguage [
+        a schema:Language ;
+        schema:name "Español" 
+    ] , [
+        a schema:Language ;
+        schema:name "Inglés"
+    ] ;
+    schema:knowsAbout "Leer", "Correr" .
+
+ex:persona2 a foaf:Person ;
+    foaf:name "Juan López" ;
+    foaf:age 30 ;
+    foaf:mbox <mailto:juan.lopez@example.com> ;
+    foaf:based_near ex:ciudad2 ;
+    foaf:alumniOf ex:universidad2 ;
+    schema:knowsLanguage [
+        a schema:Language ;
+        schema:name "Español"
+    ] ;
+    schema:knowsAbout "Fotografía", "Cocina" .
+
+ex:persona3 a foaf:Person ;
+    foaf:name "Lucía Fernández" ;
+    foaf:age 27 ;
+    foaf:mbox <mailto:lucia.fernandez@example.com> ;
+    foaf:based_near ex:ciudad1 ;
+    schema:alumniOf ex:universidad1 ;
+    schema:knowsLanguage [
+        a schema:Language ;
+        schema:name "Francés"
+    ], [
+        a schema:Language ;
+        schema:name "Español"
+    ] ;
+    foaf:knowsAbout "Viajar", "Escuchar música" .

@@ -7,53 +7,55 @@
 # Definición de clases
 ex:Publicacion a rdfs:Class ;
     rdfs:label "Publicación" ;
-    rdfs:comment "Clase que representa cualquier tipo de publicación." .
+    rdfs:comment "Clase que representa a cualquier tipo de publicación." .
 
 ex:Libro a rdfs:Class ;
     rdfs:label "Libro" ;
-    rdfs:comment "Clase que representa los libros." ;
+    rdfs:comment "Subclase que representa a los libros." ;
     rdfs:subClassOf ex:Publicacion .
 
 ex:Revista a rdfs:Class ;
     rdfs:label "Revista" ;
-    rdfs:comment "Clase que representa las revistas." ;
+    rdfs:comment "Subclase que representa a las revistas." ;
     rdfs:subClassOf ex:Publicacion .
 
 ex:Autor a rdfs:Class ;
     rdfs:label "Autor" ;
-    rdfs:comment "Clase que representa a los autores de publicaciones." .
+    rdfs:comment "Clase que representa a los autores." .
 
-# Propiedades de datos (dataproperties)
+
+# Propiedades de los datos (data properties)
 ex:tieneNombre a rdf:Property ;
     rdfs:label "tiene nombre" ;
     rdfs:comment "Propiedad que representa el nombre de un recurso." ;
     rdfs:range xsd:string .
 
-dc:date a rdf:Property ;
-    rdfs:label "Fecha de publicación" ;
-    rdfs:comment "Fecha en la que una publicación fue lanzada." ;
+dc:date a rdfs:Property ;
+    rdfs:label "Fecha de publicación." ;
+    rdfs:comment "Fecha en que una publicación fue lanzada." ;
     rdfs:domain ex:Publicacion ;
     rdfs:range xsd:date .
 
+
 # Propiedades que conectan autores y publicaciones
-ex:escribePublicacion a rdf:Property ;
+ex:escribePublicacion a rdfs:Property ;
     rdfs:label "escribe publicación" ;
     rdfs:comment "Indica que un autor escribe una publicación." ;
     rdfs:domain ex:Autor ;
     rdfs:range ex:Publicacion .
 
-ex:escribeLibro a rdf:Property ;
+ex:escribeLibro a rdfs:Property ;
     rdfs:label "escribe libro" ;
-    rdfs:comment "Indica que un autor escribe una publicación." ;
-    rdfs:domain ex:Autor ;
+    rdfs:comment "Indica que un autor escribe un libro." ;
     rdfs:subPropertyOf ex:escribePublicacion ;
+    rdfs:domain ex:Autor ;
     rdfs:range ex:Libro .
 
-ex:escribeRevista a rdf:Property ;
+ex:escribeRevista a rdfs:Property ;
     rdfs:label "escribe revista" ;
-    rdfs:comment "Indica que un autor escribe una publicación." ;
+    rdfs:comment "Indica que un autor escribe una revista." ;
+    rdfs:subClassOf ex:escribePublicacion ;
     rdfs:domain ex:Autor ;
-    rdfs:subPropertyOf ex:escribePublicacion ;
     rdfs:range ex:Revista .
 
 
@@ -82,5 +84,3 @@ ex:autor1 ex:escribeLibro ex:libro1 .
 ex:autor1 ex:escribeLibro ex:libro2 .
 
 ex:autor2 ex:escribeRevista ex:revista1 .
-
-
